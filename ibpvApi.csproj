@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-  
+    <Content Include=".github\workflows\docker.yml" />
   </ItemGroup>
 
   <ItemGroup>
