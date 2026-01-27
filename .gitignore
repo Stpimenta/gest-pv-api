@@ -1,0 +1,70 @@
+# =========================
+# Build / .NET
+# =========================
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# =========================
+# Rider / JetBrains
+# =========================
+.idea/
+*.iml
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Secrets / Config
+# =========================
+
+# Ignora appsettings de ambiente
+appsettings.Development.json
+appsettings.Staging.json
+appsettings.Production.json
+
+# Ignora qualquer appsettings local
+appsettings.*.local.json
+
+# Opcional: ignora o base se você só usa env var
+# (descomente se quiser)
+# appsettings.json
+
+# =========================
+# Data Protection (NUNCA versionar)
+# =========================
+**/DataProtection-Keys/
+**/dataprotection/
+**/dp-keys/
+
+# =========================
+# Docker
+# =========================
+docker-compose.override.yml
+
+# =========================
+# Env files
+# =========================
+.env
+.env.*
+
+# =========================
+# TOKENS
+# =========================
+
