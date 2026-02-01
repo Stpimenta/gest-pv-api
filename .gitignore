@@ -38,6 +38,7 @@ Thumbs.db
 appsettings.Development.json
 appsettings.Staging.json
 appsettings.Production.json
+appsettings.json
 
 # Ignora qualquer appsettings local
 appsettings.*.local.json
@@ -68,3 +69,4 @@ docker-compose.override.yml
 # TOKENS
 # =========================
 
+appsettings.json
