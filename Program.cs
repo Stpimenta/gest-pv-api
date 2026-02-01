@@ -1,6 +1,6 @@
-/*estudar parte a parte depois*/
+
+
 using System.Text;
-using c___Api_Example;
 using c___Api_Example.Application.Mapper;
 using c___Api_Example.Application.Services.ControllersServices;
 using c___Api_Example.Application.Services.ControllersServices.interfaces;
@@ -14,15 +14,12 @@ using c___Api_Example.repository.Interfaces;
 using c___Api_Example.Repository;
 using c___Api_Example.Repository.Interfaces;
 using c___Api_Example.Services;
-using IbpvDtos;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Microsoft.Extensions.Options;
 using Minio;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -88,7 +85,6 @@ builder.Services.AddCors(options =>
     });
 });
 
-
 //criptografia das senhas
 builder.Services.AddTransient<IServiceUserPassCryptography,ServiceUserPassCryptography>();
 
@@ -96,17 +92,15 @@ builder.Services.AddTransient<IServiceUserPassCryptography,ServiceUserPassCrypto
 builder.Services.AddDataProtection()
         .SetApplicationName("ibpv")
         .PersistKeysToFileSystem(new DirectoryInfo(configuration.GetValue<string>("AmbienteVar:pathdataprotection")!));
-      
+
 //injetando o mappgind dto
 builder.Services.AddAutoMapper(typeof(DomainToDtosMapping));
-
 
 builder.Services.AddDbContext<IbpvDataBaseContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("database");
     options.UseNpgsql(connectionString);
 });
-
 
 //injecao do servico de codigos de dizimista
 builder.Services.AddTransient<IServiceGeneratedUserToken,ServiceGeneratedUserToken>();
@@ -121,8 +115,6 @@ builder.Services.AddScoped<ICaixaRepositorio, CaixaRepositorio>();
 builder.Services.AddScoped<IContribuicaoRepositorio, ContribuicaoRepositorio>();
 builder.Services.AddScoped<IPendingUnlockRepositorio, PendingUnlockRepositorio>();
 builder.Services.AddScoped<IBlockedPeriodsRepositorio, BlockedPeriodsRepositorio>();
-
-
 
 //service controllers
 builder.Services.AddScoped<IBlockedPeriodService, BlockedPeriodService>();
@@ -151,9 +143,6 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-
-
-
 builder.Services.AddScoped<IMinioClient>(sp =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
@@ -178,13 +167,12 @@ builder.Services.AddScoped<MinioService>();
 
 var app = builder.Build();
 
-
 // redirecionando caso ocorra error sem captura
 if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/error-development");
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseExceptionHandler("/error-development");
+    // app.UseSwagger();
+    // app.UseSwaggerUI();
 }else{
     app.UseExceptionHandler("/error");
 }
