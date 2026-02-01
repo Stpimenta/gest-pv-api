@@ -10,7 +10,7 @@ permissions:
   packages: write
 
 env:
-  IMAGE_NAME: ghcr.io/stpimenta/ibpvapi
+  IMAGE_NAME: ghcr.io/stpimenta/gest-pv-api
 
 jobs:
   docker:
