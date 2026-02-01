@@ -170,9 +170,9 @@ var app = builder.Build();
 // redirecionando caso ocorra error sem captura
 if (app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/error-development");
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    // app.UseExceptionHandler("/error-development");
+    // app.UseSwagger();
+    // app.UseSwaggerUI();
 }else{
     app.UseExceptionHandler("/error");
 }
