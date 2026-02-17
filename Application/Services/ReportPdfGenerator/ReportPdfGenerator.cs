@@ -211,9 +211,9 @@ public class ReportPdfGenerator
                 // Footer
                 page.Footer().AlignRight().Text(txt =>
                 {
-                    txt.Span("Page ");
+                    txt.Span("Página ");
                     txt.CurrentPageNumber();
-                    txt.Span(" of ");
+                    txt.Span(" de ");
                     txt.TotalPages();
                 });
             });
