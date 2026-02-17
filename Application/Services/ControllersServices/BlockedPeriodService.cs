@@ -7,7 +7,7 @@ using IbpvDtos;
 
 namespace c___Api_Example.Application.Services.ControllersServices;
 
-public class BlockedPeriodService : IBlockedPeriodService
+public class BlockedPeriodService 
 {
     private readonly IBlockedPeriodsRepositorio _repo;
     private readonly IMapper _mapper;

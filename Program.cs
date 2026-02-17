@@ -6,8 +6,10 @@ using c___Api_Example.Application.Services.ControllersServices;
 using c___Api_Example.Application.Services.ControllersServices.interfaces;
 using c___Api_Example.Application.Services.Gdrive;
 using c___Api_Example.Application.Services.GeneratedUserToken;
+using c___Api_Example.Application.Services.generateReportPdf;
 using c___Api_Example.Application.Services.UserCryptography;
 using c___Api_Example.data;
+using c___Api_Example.Infrastructure.Repository;
 using c___Api_Example.Infrastructure.Repository.Interfaces;
 using c___Api_Example.repository;
 using c___Api_Example.repository.Interfaces;
@@ -115,12 +117,14 @@ builder.Services.AddScoped<ICaixaRepositorio, CaixaRepositorio>();
 builder.Services.AddScoped<IContribuicaoRepositorio, ContribuicaoRepositorio>();
 builder.Services.AddScoped<IPendingUnlockRepositorio, PendingUnlockRepositorio>();
 builder.Services.AddScoped<IBlockedPeriodsRepositorio, BlockedPeriodsRepositorio>();
+builder.Services.AddScoped<IFinancialReportRepository, FinancialReportRepository>();
 
 //service controllers
-builder.Services.AddScoped<IBlockedPeriodService, BlockedPeriodService>();
-builder.Services.AddScoped<IPendingUnlockService, PendingUnlockService>();
+builder.Services.AddScoped<BlockedPeriodService>();
+builder.Services.AddScoped<PendingUnlockService>();
 builder.Services.AddScoped<ContributionService>();
 builder.Services.AddScoped<ExpenseService>();
+builder.Services.AddScoped<FinancialReportService>();
 
 //http services
 builder.Services.AddHttpContextAccessor();
@@ -163,16 +167,21 @@ builder.Services.AddScoped<IMinioClient>(sp =>
 // MinioService depende do IMinioClient
 builder.Services.AddScoped<MinioService>();
 
+//pdf
+builder.Services.AddScoped<ReportPdfGenerator>();
+
 // builder.Services.AddScoped<UsuarioSyncService>();
 
 var app = builder.Build();
 
+
+
 // redirecionando caso ocorra error sem captura
 if (app.Environment.IsDevelopment())
 {
-    // app.UseExceptionHandler("/error-development");
-    // app.UseSwagger();
-    // app.UseSwaggerUI();
+    app.UseExceptionHandler("/error-development");
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }else{
     app.UseExceptionHandler("/error");
 }

@@ -12,7 +12,7 @@ namespace c___Api_Example.Models
         public decimal Valor {get;set;}
         public string? Descricao {get;set;}
         public DateTime Data {get;set;}
-        public string? UrlComprovante {get;set;}
+        // public string? UrlComprovante {get;set;}
         public string? NumeroFiscal {get;set;}
 
 

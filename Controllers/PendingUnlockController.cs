@@ -1,4 +1,5 @@
 using AutoMapper;
+using c___Api_Example.Application.Services.ControllersServices;
 using c___Api_Example.Application.Services.ControllersServices.interfaces;
 using IbpvDtos;
 using c___Api_Example.Domain.Models;
@@ -13,9 +14,9 @@ namespace c___Api_Example.Controllers
     [Authorize]
     public class PendingUnlockController : ControllerBase
     {
-        private readonly IPendingUnlockService _pendingUnlockService;
+        private readonly PendingUnlockService _pendingUnlockService;
 
-        public PendingUnlockController(IPendingUnlockService pendingUnlockService)
+        public PendingUnlockController(PendingUnlockService pendingUnlockService)
         {
             _pendingUnlockService = pendingUnlockService;
         }

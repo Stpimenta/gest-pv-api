@@ -16,7 +16,7 @@ namespace c___Api_Example.Data.Map
             builder.Property((u) => u.Data).IsRequired();
             builder.Property((u) => u.Descricao).HasMaxLength(255).IsRequired();
             builder.Property((u) => u.NumeroFiscal).HasMaxLength(255);
-            builder.Property((u) => u.UrlComprovante).HasMaxLength(255);
+         
             builder.Property((u) => u.Valor).IsRequired();
 
             /*se relaciona com caixa*/

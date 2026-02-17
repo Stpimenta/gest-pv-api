@@ -7,7 +7,7 @@ using IbpvDtos;
 
 namespace c___Api_Example.Application.Services.ControllersServices;
 
-public class PendingUnlockService : IPendingUnlockService
+public class PendingUnlockService 
 {
     private readonly IPendingUnlockRepositorio _repo;
     private readonly IBlockedPeriodsRepositorio _blockedRepo;

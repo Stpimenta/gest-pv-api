@@ -152,7 +152,6 @@ namespace c___Api_Example.Repository
             dbContribuicao.Valor = model.Valor;
             dbContribuicao.Data = model.Data;
             dbContribuicao.Descricao = model.Descricao;
-            dbContribuicao.UrlEnvelope = model.UrlEnvelope;
             dbContribuicao.IdMembro = model.IdMembro;
 
       

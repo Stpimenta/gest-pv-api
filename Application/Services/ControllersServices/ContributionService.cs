@@ -13,11 +13,11 @@ public class ContributionService
     private readonly IContribuicaoRepositorio _contribuicaoRepositorio;
     private readonly IUsuarioRepositorio _userRepositorio;
     private readonly IMapper _mapper;
-    private readonly IBlockedPeriodService _blockedPeriodService;
+    private readonly BlockedPeriodService _blockedPeriodService;
     private readonly MinioService _minioService;
 
     public ContributionService(IContribuicaoRepositorio contribuicaoRepositorio, IMapper mapper,  
-        IBlockedPeriodService blockedPeriodService,  MinioService minioService,  IUsuarioRepositorio userRepositorio)
+        BlockedPeriodService blockedPeriodService,  MinioService minioService,  IUsuarioRepositorio userRepositorio)
     {
         _contribuicaoRepositorio = contribuicaoRepositorio;
         _mapper = mapper;
@@ -68,7 +68,6 @@ public class ContributionService
            Valor = contribution.Valor,
            Descricao = contribution.Descricao,
            Data = contribution.Data,
-           UrlEnvelope = contribution.UrlEnvelope,
            IdCaixa = contribution.IdCaixa,
            IdMembro = contribution.IdMembro,
            TokenMembro = null,
@@ -198,7 +197,6 @@ public class ContributionService
         Data = DateTime.SpecifyKind(dto.Data!.Value, DateTimeKind.Utc),
         IdCaixa = dto.IdCaixa!.Value,
         IdMembro = dto.IdMembro,
-        UrlEnvelope = dto.UrlEnvelope,
         Images = new List<ContributionImageModel>()
     };
 

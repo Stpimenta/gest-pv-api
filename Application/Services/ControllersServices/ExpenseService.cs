@@ -13,10 +13,10 @@ public class ExpenseService
 {
     private readonly IGastoRepositorio _expenseRepository;
     private readonly IMapper _mapper;
-    private readonly IBlockedPeriodService _blockedPeriodsService;
+    private readonly BlockedPeriodService _blockedPeriodsService;
     private readonly MinioService _minioService;
 
-    public ExpenseService(IGastoRepositorio expenseRepository, IMapper mapper, IBlockedPeriodService blockedPeriodsService, 
+    public ExpenseService(IGastoRepositorio expenseRepository, IMapper mapper, BlockedPeriodService blockedPeriodsService, 
         MinioService minioService)
     {
         _expenseRepository = expenseRepository;
@@ -80,7 +80,6 @@ public class ExpenseService
             Valor = expense.Valor,
             Descricao = expense.Descricao,
             Data = expense.Data,
-            UrlComprovante = expense.UrlComprovante,
             NumeroFiscal = expense.NumeroFiscal,
             IdCaixa = expense.IdCaixa,
             Images = new List<ExpenseImageDTO>()
