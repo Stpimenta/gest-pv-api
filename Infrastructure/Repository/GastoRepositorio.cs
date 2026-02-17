@@ -166,7 +166,7 @@ namespace c___Api_Example.Repository.Interfaces
                 dbGasto.Data = model.Data;
                 dbGasto.Descricao = model.Descricao;
                 dbGasto.NumeroFiscal = model.NumeroFiscal;
-                dbGasto.UrlComprovante = model.UrlComprovante;
+      
 
                 // images (state already decided in the service)
                 dbGasto.Images.Clear();

@@ -12,7 +12,7 @@ namespace c___Api_Example.Models
         public decimal Valor {get;set;}
         public string? Descricao {get;set;}
         public DateTime? Data {get;set;}
-        public string? UrlEnvelope {get;set;}
+        // public string? UrlEnvelope {get;set;}
 
         /*relacionamento com caixa*/
         public int IdCaixa {get;set;}

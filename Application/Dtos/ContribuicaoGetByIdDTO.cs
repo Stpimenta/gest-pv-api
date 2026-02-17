@@ -9,7 +9,6 @@ public class ContribuicaoGetByIdDTO
     public decimal Valor {get;set;}
     public string? Descricao {get;set;}
     public DateTime? Data {get;set;}
-    public string? UrlEnvelope {get;set;}
     public int? IdCaixa {get;set;}
     public int? IdMembro {get; set;}
     public string? TokenMembro {get;set;}

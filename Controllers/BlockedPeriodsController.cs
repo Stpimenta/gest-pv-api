@@ -1,4 +1,5 @@
 using AutoMapper;
+using c___Api_Example.Application.Services.ControllersServices;
 using c___Api_Example.Application.Services.ControllersServices.interfaces;
 using IbpvDtos;
 using c___Api_Example.Domain.Models;
@@ -12,9 +13,9 @@ namespace c___Api_Example.Controllers
     [Authorize]
     public class BlockedPeriodsController : ControllerBase
     {
-        private readonly IBlockedPeriodService _blockedPeriodService;
+        private readonly BlockedPeriodService _blockedPeriodService;
 
-        public BlockedPeriodsController(IBlockedPeriodService blockedPeriodService)
+        public BlockedPeriodsController(BlockedPeriodService blockedPeriodService)
         {
             _blockedPeriodService = blockedPeriodService;
         }
