@@ -45,10 +45,28 @@ public class UserService
         var dto = _mapper.Map<UsuarioGetByIdDTO>(user);
 
         if (!string.IsNullOrEmpty(dto.Cpf))
-            dto.Cpf = _dataProtector.Unprotect(dto.Cpf);
+        {
+            try
+            {
+                dto.Cpf = _dataProtector.Unprotect(dto.Cpf);
+            }
+            catch
+            {
+                dto.Cpf = null; 
+            }
+        }
 
         if (!string.IsNullOrEmpty(dto.RGnumero))
-            dto.RGnumero = _dataProtector.Unprotect(dto.RGnumero);
+        {
+            try
+            {
+                dto.RGnumero = _dataProtector.Unprotect(dto.RGnumero);
+            }
+            catch
+            {
+                dto.RGnumero = null;
+            }
+        }
 
         if (!string.IsNullOrEmpty(dto.urlImage))
         {
