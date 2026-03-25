@@ -19,13 +19,11 @@ namespace IbpvDtos
         [EmailAddress(ErrorMessage = "Email invalido")]
         public string? Email {get; set;}
         
-        [Required(ErrorMessage="campo não pode ser nulo")]
-        [RegularExpression(@"^(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~])[\w!@#$%^&*()_+{}[\]:;<>,.?/~]{6,}$",
-        ErrorMessage = "senha muito fraca, utilize caracteres especiais")]
+       
         public string? Senha {get; set;}
         
         public string? Cpf {get; set;}
-        public string? TokenContribuicao {get; set;}
+      
         public string? RGnumero{get; set;}
         public string? Telefone_pais {get; set;}
         public string? TelefoneNumero {get; set;}
@@ -65,18 +63,18 @@ namespace IbpvDtos
         [Required(ErrorMessage="campo não pode ser nulo")]
         public string? estadoCivil {get; set;}
         
-        [Required(ErrorMessage="campo não pode ser nulo")]
-        public EnumStatusMembro status {get; set;}
+        // [Required(ErrorMessage="campo não pode ser nulo")]
+        // public EnumStatusMembro status {get; set;}
 
         [Required(ErrorMessage="campo não pode ser nulo")]
         public EnumRole? Rule{get; set;}
 
         [Required(ErrorMessage="campo não pode ser nulo")]
         public Enumgenero? genero {get;set;}
-
-        public string? urlImage {get;set;}
         
         public bool alarmAuth { get; set; } = false;
+        
+        public IFormFile? Image { get; set; }
 
     }
 }

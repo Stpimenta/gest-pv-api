@@ -125,6 +125,7 @@ builder.Services.AddScoped<PendingUnlockService>();
 builder.Services.AddScoped<ContributionService>();
 builder.Services.AddScoped<ExpenseService>();
 builder.Services.AddScoped<FinancialReportService>();
+builder.Services.AddScoped<UserService>();
 
 //http services
 builder.Services.AddHttpContextAccessor();
@@ -171,10 +172,7 @@ builder.Services.AddScoped<MinioService>();
 builder.Services.AddScoped<ReportPdfGenerator>();
 
 // builder.Services.AddScoped<UsuarioSyncService>();
-
 var app = builder.Build();
-
-
 
 // redirecionando caso ocorra error sem captura
 if (app.Environment.IsDevelopment())

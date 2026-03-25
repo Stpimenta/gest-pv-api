@@ -21,7 +21,7 @@ namespace IbpvDtos
         public string? Email {get; set;}
         
         public string? Cpf {get; set;}
-        public string? TokenContribuicao {get; set;}
+   
         public string? RGnumero{get; set;}
         public string? Telefone_pais {get; set;}
         public string? TelefoneNumero {get; set;}
@@ -56,17 +56,17 @@ namespace IbpvDtos
         [Required(ErrorMessage="campo não pode ser nulo")]
         public Enumgenero? genero {get;set;}
         
-        [Required(ErrorMessage="campo não pode ser nulo")]
-        public EnumStatusMembro status {get; set;}
+        // [Required(ErrorMessage="campo não pode ser nulo")]
+        // public EnumStatusMembro status {get; set;}
         
         [Required(ErrorMessage="campo não pode ser nulo")]
         public string? estadoCivil {get; set;}
-        [Required(ErrorMessage="campo não pode ser nulo")]
+    
         
         public string? profissao {get; set;}
         
         [Required(ErrorMessage="campo não pode ser nulo")]
-        public string? filhos {get; set;}
+        public bool filhos {get; set;}
         
         public DateTime? dataBatismo {get; set;}
         
@@ -77,5 +77,7 @@ namespace IbpvDtos
         public string? urlImage {get;set;}
         
         public bool alarmAuth { get; set; } = false;
+        
+        public IFormFile? Image { get; set; }
     }
 }

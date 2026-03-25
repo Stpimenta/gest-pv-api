@@ -44,6 +44,13 @@ namespace c___Api_Example.repository
             await _dataBaseContext.SaveChangesAsync();
             return user.Id;
         }
+        
+        public async Task<UsuarioModel?> GetByEmail(string email)
+        {
+            return await _dataBaseContext.Usuarios
+                .FirstOrDefaultAsync(u => u.Email == email);
+        }
+        
 
         public async Task<bool> DeleteUserById(int id)
         {
@@ -102,23 +109,22 @@ namespace c___Api_Example.repository
             return user;
         }
 
-        public async Task<bool> UpdateUser(int id, UsuarioPutDTO  userUpdate)
+        public async Task<bool> UpdateUser(UsuarioModel user)
         {
-            var userExisting = await GetUserById(id);
-            if (userExisting == null)
-                throw new Exception($"Usuário com id {id} não existe.");
-
-            // Atualiza os campos usando o AutoMapper
-            _mapper.Map(userUpdate, userExisting);
-
-            await _dataBaseContext.SaveChangesAsync();
-            return true;
+            _dataBaseContext.Usuarios.Update(user);
+            return await _dataBaseContext.SaveChangesAsync() > 0;
         }
         
         public async Task<UsuarioModel?> GetUserByGmail(string gmail)
         {
             UsuarioModel? user = await _dataBaseContext.Usuarios.FirstOrDefaultAsync(u => u.Email == gmail);
             return user;
+        }
+        
+        public async Task<bool> EmailExistsForAnotherUser(int id, string email)
+        {
+            return await _dataBaseContext.Usuarios
+                .AnyAsync(u => u.Email == email && u.Id != id);
         }
 
         public async Task<int> UpdatePassword(int id, string password)

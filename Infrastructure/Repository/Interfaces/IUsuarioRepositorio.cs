@@ -12,11 +12,12 @@ namespace c___Api_Example.repository.Interfaces
         Task<PaginetedResultDTO<UsuarioPagDTO>> GetPagUsers(int pageNumber, int pageQuantity, string? name, string? token);
         Task<UsuarioModel?> GetUserById(int id);
         Task<bool> DeleteUserById(int id);
-        Task<bool> UpdateUser(int id, UsuarioPutDTO  userUpdate);
+        Task<bool> UpdateUser(UsuarioModel user);
         Task<int> AddUser(UsuarioModel user);
         Task<UsuarioModel?> GetUserByGmail(string gmail);
         Task<int> UpdatePassword(int id, string password);
-        
+        Task<bool> EmailExistsForAnotherUser(int id, string email);
+
     }
     
 }

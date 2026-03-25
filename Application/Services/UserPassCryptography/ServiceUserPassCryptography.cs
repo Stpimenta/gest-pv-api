@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using BCrypt.Net;
 using IbpvDtos;
@@ -46,6 +47,21 @@ namespace c___Api_Example.Application.Services.UserCryptography
             string encryptPass = encryptPassUser(pass);
             int userid = await _usuarioRepositorio.UpdatePassword(id, encryptPass);
             return userid;
+        }
+        
+        public string GenerateTemporaryPassword(int length = 10)
+        {
+            const string chars = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%";
+
+            var bytes = RandomNumberGenerator.GetBytes(length);
+            var result = new char[length];
+
+            for (int i = 0; i < length; i++)
+            {
+                result[i] = chars[bytes[i] % chars.Length];
+            }
+
+            return new string(result);
         }
         
     }

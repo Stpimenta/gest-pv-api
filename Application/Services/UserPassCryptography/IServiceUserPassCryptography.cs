@@ -12,5 +12,7 @@ namespace c___Api_Example.Application.Services.UserCryptography
         Task<(bool,int)> comparePassUserLogin(LoginDTO credentials);
 
         Task<int> updateUserPassword(int id, string pass);
+        string GenerateTemporaryPassword(int length = 10);
+        
     }
 }

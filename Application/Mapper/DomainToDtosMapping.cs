@@ -47,10 +47,10 @@ namespace c___Api_Example.Application.Mapper
             CreateMap<UsuarioModel, UsuarioPutDTO>()
                 .ForMember(dest => dest.filhos, opt => opt.MapFrom(src => src.filhos ? "true" : "false"));
 
-            CreateMap<UsuarioPutDTO, UsuarioModel>()
-                .ForMember(dest => dest.filhos, opt => opt.MapFrom(src => 
-                    !string.IsNullOrWhiteSpace(src.filhos) && src.filhos.Trim().ToLower() == "true"))
-                .ForMember(dest => dest.Id, opt => opt.Ignore());  
+            // CreateMap<UsuarioPutDTO, UsuarioModel>()
+            //     .ForMember(dest => dest.filhos, opt => opt.MapFrom(src => 
+            //         !string.IsNullOrWhiteSpace(src.filhos) && src.filhos.Trim().ToLower() == "true"))
+            //     .ForMember(dest => dest.Id, opt => opt.Ignore());  
             
             
             CreateMap<PendingUnlockPostDto, PendingUnlockModel>()

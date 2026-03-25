@@ -47,11 +47,8 @@ namespace c___Api_Example.Models
         public bool alarmAuth { get; set;  }
 
 
-        /*programador  cria*/
-        //  public string nome
-        // {
-        //     get { return nome; }
-        //     set { nome = value; }
-        // }
+       
+        
+        
     }
 }
