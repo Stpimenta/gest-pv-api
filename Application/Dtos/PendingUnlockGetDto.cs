@@ -1,3 +1,5 @@
+using c___Api_Example.Models;
+
 namespace IbpvDtos;
 
 public class PendingUnlockGetDto
@@ -7,6 +9,6 @@ public class PendingUnlockGetDto
     public int BlockUserId { get; set; }
     public DateTime? DateUnlocked { get; set; }
     public bool IsActive { get; set; }
-    
-  
+    public UsuarioGetByIdDTO BlockedUser { get; set; }
+
 }
