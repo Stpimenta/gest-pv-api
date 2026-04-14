@@ -11,6 +11,9 @@ public class BlockedPeriodsPostDTO
     [Required(ErrorMessage = "Campo obrigatório")]
     [CustomValidation(typeof(BlockedPeriodsPostDTO),nameof(ValidateEndDate))]
     public DateTime? EndDate { get; set; }
+    
+    [MaxLength(500, ErrorMessage = "Máximo de 500 caracteres")]
+    public string? Description { get; set; }
 
     public static ValidationResult? ValidateEndDate(DateTime endDate, ValidationContext validationContext)
     {

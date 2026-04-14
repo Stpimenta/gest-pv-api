@@ -14,6 +14,10 @@ public class BlockedPeriodsMap : IEntityTypeConfiguration<BlockedPeriodModel>
 
         builder.Property(p => p.StartDate).IsRequired();
         builder.Property(p => p.EndDate).IsRequired();
+        
+        builder.Property(p => p.Description)
+            .HasMaxLength(500)
+            .IsRequired(false);
 
         builder.Property(p => p.IsBlocked)
             .IsRequired()

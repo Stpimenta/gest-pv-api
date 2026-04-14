@@ -11,6 +11,8 @@ public class BlockedPeriodModel
 
     public bool IsBlocked { get; set; }      
     public int BlockedById { get; set; }      
+    
+    public string? Description { get; set; }
 
     public DateTime? BlockedDate { get; set; } 
     

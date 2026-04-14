@@ -8,7 +8,9 @@ public class BlockedPeriodGetDto
     public DateTime EndDate { get; set; }
 
     public bool IsBlocked { get; set; }      
-    public int BlockedById { get; set; }      
+    public int BlockedById { get; set; }     
+    
+    public string? Description { get; set; }
 
     public DateTime? BlockedDate { get; set; } 
     

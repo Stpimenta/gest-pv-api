@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using c___Api_Example.data;
@@ -11,9 +12,11 @@ using c___Api_Example.data;
 namespace c___Api_Example.Migrations
 {
     [DbContext(typeof(IbpvDataBaseContext))]
-    partial class IbpvDataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20260407203436_AddDescriptionToBlockedPeriod")]
+    partial class AddDescriptionToBlockedPeriod
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

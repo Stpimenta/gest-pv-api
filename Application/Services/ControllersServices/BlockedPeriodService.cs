@@ -28,6 +28,7 @@ public class BlockedPeriodService
             filterDate = DateTime.SpecifyKind(filterDate.Value, DateTimeKind.Utc);
         
         var result = await _repo.GetPag(page, quantity, filterDate);
+        
 
         return new PaginetedResultDTO<BlockedPeriodGetDto>
         {
