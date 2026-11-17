@@ -12,7 +12,7 @@ namespace IbpvDtos
         public int Id {get;set;}
         
         [Required(ErrorMessage = "Valor não pode ser nulo")]
-        [Range(0.01, double.MaxValue, ErrorMessage = "Valor deve ser maior que zero")]
+        [Range(0, double.MaxValue, ErrorMessage = "Valor não pode ser negativo")]
         public decimal Valor {get;set;}
         public string? Descricao {get;set;}
         
