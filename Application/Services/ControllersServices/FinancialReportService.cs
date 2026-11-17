@@ -46,16 +46,39 @@ public class FinancialReportService
             month);
     }
     
-    public async Task<MemoryStream> GetMonthlyFinancialReportPdf(int walletId, int year, int month)
+    public async Task<(MemoryStream Stream, string FileName)> GetMonthlyFinancialReportPdf(int walletId, int year, int month)
     {
         var reportDto = await GetMonthlyFinancialReport(walletId, year, month);
-        return _pdfGenerator.GenerateFinancialReport(reportDto);
+        var stream = _pdfGenerator.GenerateFinancialReport(reportDto);
+        return (stream, BuildReportFileName(reportDto.WalletName, year, month));
     }
     
-    public async Task<MemoryStream> GetMonthlyBalanceSummaryPdf(int year, int month)
+    public async Task<(MemoryStream Stream, string FileName)> GetMonthlyBalanceSummaryPdf(int year, int month)
     {
       
         var summaries = await _repository.GetAllWalletsMonthlySummary(year, month);
-        return _pdfGenerator.GeneratePdfBalanceSummary(year, month, summaries);
+        var stream = _pdfGenerator.GeneratePdfBalanceSummary(year, month, summaries);
+        return (stream, BuildReportFileName("Resumo_Saldos", year, month));
+    }
+
+    private static readonly string[] MonthAbbreviations =
+    {
+        "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+    };
+
+    private static readonly char[] InvalidFileNameChars = Path.GetInvalidFileNameChars()
+        .Concat(new[] { '\\', '/', ':', '*', '?', '"', '<', '>', '|' })
+        .Distinct()
+        .ToArray();
+
+    private static string BuildReportFileName(string baseName, int year, int month)
+    {
+        var safeBaseName = string.Concat(baseName.Where(c => !InvalidFileNameChars.Contains(c))).Trim();
+        if (string.IsNullOrWhiteSpace(safeBaseName))
+            safeBaseName = "Relatorio";
+
+        var monthLabel = MonthAbbreviations[Math.Clamp(month, 1, 12) - 1];
+        return $"{safeBaseName}_{monthLabel} {year}.pdf";
     }
 }
